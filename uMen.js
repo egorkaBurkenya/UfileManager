@@ -4,27 +4,6 @@ const exec = require('child_process').exec;
 const spawn = require('child_process').spawn;
 const fs = require('fs');
 
-exec('git pull', function(err, stdout, stderr) {
-  if (err) throw err
-  if (stdout.trim() == 'Already up to date.') {
-    console.log('The last version ✨\n');
-  } else {
-    fs.readFile('info.json', (err, data) => {
-      if (err) throw err
-      let info = JSON.parse(data)
-      log_info(info)
-    })
-  }
-  process.stdout.write(`umen-terminal~ `)
-})
-
-function log_info(info) {
-  console.group('\nuMen update to 🔮:')
-  console.log(`Version - ${info.version}`)
-  console.log('\npress ENTER');
-  console.groupEnd();
-}
-
 
 function init_python_project(umeinit){
   exec('pip3 freeze', function(err, stdout, stderr) {
@@ -57,7 +36,7 @@ function init_python_project(umeinit){
   })
 }
 
-
+process.stdout.write(`umen-terminal~ `)
 process.stdin.on('data', data => {
   let com = data.toString().trim().toLowerCase() 
 
