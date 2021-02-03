@@ -59,6 +59,7 @@ process.stdin.on('data', data => {
     const umeinit = fs.readFileSync("../.umeninit", "utf8").split(' ')
     if (umeinit[0] == '-python') {
       init_python_project(umeinit)
+      console.log('waiting...');
     }
   }
   process.stdout.write(`umen-terminal~ `) 
